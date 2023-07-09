@@ -18,4 +18,24 @@
     <string name="phone_register">Phone</string>
     <string name="image_register">User profile image</string>
     <string name="email_register">Email</string>
+    <string name="edit_spot_fragment_label">Add/Edit</string>
+    <string name="edit_spot_name">Name</string>
+    <string name="edit_spot_description">Descritpion</string>
+    <string name="edit_spot_category">Category</string>
+    <string name="image_edit_spot">Image of the spot</string>
+    <string name="edit_spot_long">Longitude</string>
+    <string name="edit_spot_latitude">Latitude</string>
+    <string name="edit_spot_apply">Apply</string>
+    <string name="edit_spot_back">Back</string>
+    <string name="action_add_spot">Add spot</string>
+    <string name="btn_set_current_edit_spot">Set current</string>
+    <string-array name="spot_categories">
+        <item>Kafić</item>
+        <item>Kafana</item>
+        <item>Restoran</item>
+        <item>Noćni klub</item>
+        <item>Klub sa igrama</item>
+        <item>Park</item>
+        <item>Drugo</item>
+    </string-array>
 </resources>

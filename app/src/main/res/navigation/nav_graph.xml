@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/MapFragment">
+    app:startDestination="@id/LoginFragment">
 
     <fragment
         android:id="@+id/LoginFragment"
@@ -27,6 +27,9 @@
         <action
             android:id="@+id/action_MapFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_MapFragment_to_EditSpotFragment"
+            app:destination="@id/EditSpotFragment" />
     </fragment>
     <fragment
         android:id="@+id/RegisterFragment"
@@ -37,5 +40,18 @@
         <action
             android:id="@+id/action_RegisterFragment_to_LoginFragment"
             app:destination="@id/LoginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/EditSpotFragment"
+        android:name="elfak.mosis.project.EditSpotFragment"
+        android:label="@string/edit_spot_fragment_label"
+        tools:layout="@layout/fragment_edit_spot">
+
+        <action
+            android:id="@+id/action_EditSpotFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_EditSpotFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
     </fragment>
 </navigation>

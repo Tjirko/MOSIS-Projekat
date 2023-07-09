@@ -6,5 +6,5 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 class UserDataModel : ViewModel() {
-    var fauth : FirebaseAuth = Firebase.auth
+
 }

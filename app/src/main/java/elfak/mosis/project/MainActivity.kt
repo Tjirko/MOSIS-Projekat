@@ -56,6 +56,9 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
+            R.id.action_add_spot ->{
+                navController.navigate(R.id.action_MapFragment_to_EditSpotFragment)
+            }
             R.id.action_logout -> {
                 auth.signOut()
                 if (navController.currentDestination?.id == R.id.MapFragment)

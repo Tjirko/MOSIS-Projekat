@@ -65,7 +65,7 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        if(Firebase.auth.currentUser != null)
+        if(Firebase.auth.currentUser != null )
             findNavController().navigate(R.id.action_LoginFragment_to_MapFragment)
     }
 

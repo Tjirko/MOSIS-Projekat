@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="elfak.mosis.project.MainActivity">
     <item
+        android:id="@+id/action_add_spot"
+        android:orderInCategory="100"
+        android:title="@string/action_add_spot"
+        app:showAsAction="never" />
+    <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/action_logout"

@@ -8,12 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import elfak.mosis.project.databinding.FragmentMapBinding
 import elfak.mosis.project.model.UserDataModel
 import org.osmdroid.views.MapView
 import androidx.preference.PreferenceManager
+import elfak.mosis.project.model.LocationViewModel
+import org.osmdroid.events.MapEventsReceiver
 import org.osmdroid.util.GeoPoint
+import org.osmdroid.views.overlay.MapEventsOverlay
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay
 
@@ -25,6 +30,7 @@ class MapFragment : Fragment() {
     private var _binding: FragmentMapBinding? = null
     private val userDataModel: UserDataModel by viewModels()
     private lateinit var map: MapView
+    private val locationViewModel : LocationViewModel by activityViewModels()
 
 
     // This property is only valid between onCreateView and
@@ -61,6 +67,7 @@ class MapFragment : Fragment() {
         }
         else {
             setMyLocationOverlay()
+            setOnMapClickOverlay()
         }
         map.controller.setZoom(15.0)
         val startPoint = GeoPoint(43.3209, 21.8958)
@@ -72,11 +79,31 @@ class MapFragment : Fragment() {
         myLocationOverlay.enableMyLocation()
         map.overlays.add(myLocationOverlay)
     }
+    private fun setOnMapClickOverlay(){
+        var receive =object : MapEventsReceiver{
+            override fun singleTapConfirmedHelper(p: GeoPoint?): Boolean {
+                if (locationViewModel.setLocation){
+                    var lat = p?.latitude.toString()
+                    var long = p?.longitude.toString()
+                    locationViewModel.setLocation(lat,long)
+                    findNavController().popBackStack()
+                }
+                return true
+            }
+
+            override fun longPressHelper(p: GeoPoint?): Boolean {
+                return false
+            }
+        }
+        var overlayEvents = MapEventsOverlay(receive)
+        map.overlays.add(overlayEvents)
+    }
     private val requestPermissionLauncher =
         registerForActivityResult(ActivityResultContracts.RequestPermission()){
             isGranted: Boolean ->
             if (isGranted){
                 setMyLocationOverlay()
+                setOnMapClickOverlay()
             }
         }
     override fun onResume() {
