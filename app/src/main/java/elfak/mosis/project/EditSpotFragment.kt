@@ -135,12 +135,17 @@ class EditSpotFragment : Fragment() {
                     "updated" to Calendar.getInstance().time
                 )
 
-                firestore.collection("posts").document(spotId).set(spotHM).addOnSuccessListener {
+                firestore.collection("spots").document(spotId).set(spotHM).addOnSuccessListener {
                     storageRef =
                         Firebase.storage.getReference("Images/SpotImages/$spotId")
                     imageUri?.let { it1 -> storageRef.putFile(it1) }?.addOnSuccessListener {
                         storageRef.downloadUrl.addOnCompleteListener {
-                            firestore.collection("spots").document(spotId).update("imageUri", it.result)
+                            firestore.collection("spots").document(spotId).update("imageUri", it.result).addOnCompleteListener{task ->
+                                if(!task.isSuccessful){
+                                    Log.d("UpdateSpotImage",task.exception.toString())
+                                    Log.d("UpdateSpotImage",task.result.toString())
+                                }
+                            }
                         }
                     locationViewModel.setLocation("","")
                     findNavController().popBackStack()
