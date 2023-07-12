@@ -136,6 +136,10 @@ class EditSpotFragment : Fragment() {
                 )
 
                 firestore.collection("spots").document(spotId).set(spotHM).addOnSuccessListener {
+                    firestore.collection("users").document(auth.currentUser!!.uid).get().addOnSuccessListener{
+                        firestore.collection("users").document(auth.currentUser!!.uid).update("score",
+                            it.data!!["score"] as Int + 1)
+                    }
                     storageRef =
                         Firebase.storage.getReference("Images/SpotImages/$spotId")
                     imageUri?.let { it1 -> storageRef.putFile(it1) }?.addOnSuccessListener {

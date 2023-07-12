@@ -30,6 +30,12 @@
         <action
             android:id="@+id/action_MapFragment_to_EditSpotFragment"
             app:destination="@id/EditSpotFragment" />
+        <action
+            android:id="@+id/action_MapFragment_to_ShowSpotFragment"
+            app:destination="@id/ShowSpotFragment" />
+        <action
+            android:id="@+id/action_MapFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
     </fragment>
     <fragment
         android:id="@+id/RegisterFragment"
@@ -53,5 +59,76 @@
         <action
             android:id="@+id/action_EditSpotFragment_to_MapFragment"
             app:destination="@id/MapFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/ShowSpotFragment"
+        android:name="elfak.mosis.project.ShowSpotFragment"
+        android:label="@string/spot_info"
+        tools:layout="@layout/fragment_show_spot">
+
+        <action
+            android:id="@+id/action_ShowSpotFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_ShowSpotFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+        <action
+            android:id="@+id/action_ShowSpotFragment_to_ListFragment"
+            app:destination="@id/ListFragment" />
+
+
+    </fragment>
+    <fragment
+        android:id="@+id/ListFragment"
+        android:name="elfak.mosis.project.ListFragment"
+        android:label="@string/list_label"
+        tools:layout="@layout/fragment_list">
+
+        <action
+            android:id="@+id/action_ListFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+        <action
+            android:id="@+id/action_ListFragment_to_ShowSpotFragment"
+            app:destination="@id/ShowSpotFragment" />
+
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/FilterFragment"
+        android:name="elfak.mosis.project.FilterFragment"
+        android:label="@string/filter_label"
+        tools:layout="@layout/fragment_filter">
+
+        <action
+            android:id="@+id/action_FilterFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_FilterFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/LeaderboardFragment"
+        android:name="elfak.mosis.project.LeaderboardFragment"
+        android:label="@string/leaderboard_label"
+        tools:layout="@layout/fragment_leaderboard">
+
+        <action
+            android:id="@+id/action_LeaderboardFragment_to_LoginFragment"
+            app:destination="@id/LoginFragment" />
+        <action
+            android:id="@+id/action_LeaderboardFragment_to_MapFragment"
+            app:destination="@id/MapFragment" />
+
+
+
     </fragment>
 </navigation>

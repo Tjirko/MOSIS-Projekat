@@ -56,8 +56,20 @@ class MainActivity : AppCompatActivity() {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         when (item.itemId) {
+            R.id.action_map->{
+                navController.navigate(R.id.MapFragment)
+            }
+            R.id.action_list->{
+                navController.navigate(R.id.ListFragment)
+            }
+            R.id.action_filter->{
+                navController.navigate(R.id.FilterFragment)
+            }
             R.id.action_add_spot ->{
                 navController.navigate(R.id.action_MapFragment_to_EditSpotFragment)
+            }
+            R.id.action_leaderboard ->{
+                navController.navigate(R.id.LeaderboardFragment)
             }
             R.id.action_logout -> {
                 auth.signOut()
